@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>John Doe - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <meta name="description" content="Personal Portfolio" />
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <!-- Hero Section -->
+        <section class="hero">
+          <h1>Khyrul Bashar</h1>
+          <p class="subtitle">
+            Software Engineer specialized in frontend development with a passion for creating clean, user-friendly interfaces.
+          </p>
+        </section>
+
+        <!-- Bio Section -->
+        <section class="bio">
+          <p>
+            I'm a software engineer with 5+ years of experience building web applications.
+            I specialize in React, TypeScript, and modern frontend technologies.
+            Currently working on improving user experiences through thoughtful design and efficient code.
+          </p>
+        </section>
+
+        <!-- Social Links -->
+        <section class="social">
+          <h2>Connect With Me</h2>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-twitter"></i>
+              <span>Twitter</span>
+            </a>
+            <a href="https://medium.com/@yourusername" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-medium"></i>
+              <span>Medium</span>
+            </a>
+            <a href="mailto:your.email@example.com" class="email-link">
+              <i class="fas fa-envelope"></i>
+              <span>your.email@example.com</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+          <p>© <span id="current-year"></span> John Doe. All rights reserved.</p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear().toString();
+    </script>
+  </body>
+</html>
