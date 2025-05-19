@@ -112,28 +112,26 @@ export const personalInfo = {
   
   export const projects = [
     {
-      title: "PersonaForge",
-      github: "https://github.com/kBashar/personaforge",
+      title: "Hall Management System",
+      github: "https://github.com/kBashar/Hall-management",
       description: [
-        "Developed a SaaS tool enabling users to create and manage customizable GPT personas with embedded behavioral and contextual memory.",
-        "Integrated Qdrant vector DB to power memory-based persona responses for contextual consistency.",
-        "Implemented a dashboard for users to train and evaluate their personas using natural conversation logs.",
-        "Built backend using FastAPI with secure, scalable multi-tenant architecture deployed on AWS ECS.",
-        "Supported export/import of persona templates for reuse across organizations."
+        "Developed a comprehensive Java-based desktop application for managing dormitory operations at CUET.",
+        "Implemented modules for student registration, room allocation, fee management, and administrative reporting.",
+        "Integrated secure authentication and role-based access control to ensure data privacy and operational integrity.",
+        "Streamlined administrative workflows, reducing manual processes and enhancing efficiency."
       ]
     },
     {
-      title: "SmartGrid Sentinel",
-      github: "https://github.com/kBashar/smartgrid-sentinel",
+      title: "Dhaka Weather Forecasting",
+      github: "https://github.com/kBashar/dhaka-weather",
       description: [
-        "Engineered an IoT-powered monitoring system to track power failure events in real time for distribution grids.",
-        "Deployed a local edge processing unit using Dockerized services that syncs critical event data via WebSocket to central AWS EC2 nodes.",
-        "Integrated fault classification using anomaly detection algorithms and visualized data on a React-based dashboard.",
-        "Enabled automated alerts to maintenance teams with analytics insights on fault frequency and region-wise reliability.",
-        "Reduced fault resolution time by 40% across pilot deployment in DPDC substations."
+        "Built a time-series forecasting model using Facebook Prophet to predict weather patterns in Dhaka.",
+        "Processed and analyzed historical weather data to train the predictive model.",
+        "Visualized forecasted data to provide insights into temperature trends and anomalies.",
+        "Demonstrated the application of machine learning techniques in real-world environmental data analysis."
       ]
     }
-  ];
+  ];  
   
 
   export const awards = [
