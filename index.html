@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khyrul Bashar — Senior Backend Engineer</title>
+  <title>Khyrul Bashar — Senior Software Engineer</title>
   <meta name="description" content="Senior Backend Engineer specializing in Python, FastAPI, Gen-AI/RAG systems, and cloud infrastructure." />
-  <meta property="og:title" content="Khyrul Bashar — Senior Backend Engineer" />
+  <meta property="og:title" content="Khyrul Bashar — Senior Software Engineer" />
   <meta property="og:description" content="Senior Backend Engineer specializing in Python, FastAPI, Gen-AI/RAG systems, and cloud infrastructure." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -32,7 +32,12 @@
           <li><a href="photography.html">Photos</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+          </li>
+          <li>
+            <a href="assets/resume.pdf" class="btn-nav" download>Download Resume</a>
           </li>
         </ul>
       </nav>
@@ -45,17 +50,37 @@
     <section class="hero container">
       <div class="hero-inner">
         <div class="hero-text">
-          <p class="hero-label">Senior Backend Engineer</p>
-          <h1 class="hero-title">I build backends<br />that power AI.</h1>
+          <p class="hero-label">Senior Software Engineer</p>
+          <h1 class="hero-title">I build backends<br>that power AI</h1>
           <div class="hero-divider"></div>
           <p class="hero-body">
-            6+ years shipping Python backends, RAG pipelines, and IoT systems —
+            <strong>6+ years</strong> shipping Python backends, RAG pipelines, and IoT systems —
             from GSoC at Apache to leading AI product development at a Tokyo-based startup.
             Currently exploring the overlap of Gen-AI and reliable distributed systems.
           </p>
-          <div class="hero-actions">
-            <a href="portfolio.html" class="btn btn-primary">View My Work</a>
-            <a href="blog/index.html" class="btn btn-outline">Read the Blog</a>
+          <div class="hero-status">
+            <span class="hero-status-dot"></span>
+            <span>Available for new projects</span>
+          </div>
+          <div class="hero-social-links">
+            <a href="mailto:khyrulbashar.0.1@gmail.com" class="icon-btn" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://medium.com/@kbashar" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Medium">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            </a>
+            <a href="https://leetcode.com/kbashar" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LeetCode">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 13h7.5"/><path d="M9.424 7.268l4.999-4.999"/><path d="M16.633 16.644l-2.402 2.415a3.189 3.189 0 0 1-4.524 0l-3.77-3.787a3.223 3.223 0 0 1 0-4.544l3.77-3.787a3.189 3.189 0 0 1 4.524 0l2.302 2.313"/></svg>
+            </a>
+            <a href="blog/index.html" class="icon-btn" aria-label="Blog">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+            </a>
           </div>
         </div>
         <div class="hero-photo-wrap">
@@ -65,7 +90,7 @@
     </section>
 
     <!-- ── Featured Work ──────────────────────────────────────── -->
-    <section class="section">
+    <section class="section-band section-band--alt">
       <div class="container">
         <h2 class="section-heading">Recent Work</h2>
         <div class="grid-2">
@@ -86,7 +111,7 @@
                 <li class="tag">FastAPI</li>
               </ul>
               <div class="project-card-links">
-                <a href="portfolio.html">→ View Details</a>
+                <a href="portfolio.html">View Details <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
               </div>
             </div>
           </article>
@@ -107,37 +132,47 @@
                 <li class="tag">PostgreSQL</li>
               </ul>
               <div class="project-card-links">
-                <a href="portfolio.html">→ View Details</a>
+                <a href="portfolio.html">View Details <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
               </div>
             </div>
           </article>
 
         </div>
-        <p style="margin-top: var(--sp-6); font-size: 0.9rem;">
-          <a href="portfolio.html">See all projects →</a>
-        </p>
+        <p class="section-more"><a href="portfolio.html">See all projects <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></p>
       </div>
     </section>
 
     <!-- ── Latest Writing ─────────────────────────────────────── -->
-    <section class="section">
+    <section class="section-band">
       <div class="container">
         <h2 class="section-heading">Latest Writing</h2>
-        <ul class="post-list" role="list">
-          <li class="post-list-item">
-            <span class="post-list-date">Jan 15, 2026</span>
-            <a href="blog/posts/how-authenticator-apps-generate-otps.html" class="post-list-title">Understanding How Authenticator Apps Generate OTPs Offline</a>
-            <span class="post-list-read">read →</span>
-          </li>
-          <li class="post-list-item">
-            <span class="post-list-date">Sep 23, 2024</span>
-            <a href="blog/posts/observer-pattern-python.html" class="post-list-title">Observer Pattern with Python</a>
-            <span class="post-list-read">read →</span>
-          </li>
-        </ul>
-        <p style="margin-top: var(--sp-6); font-size: 0.9rem;">
-          <a href="blog/index.html">All posts →</a>
-        </p>
+        <div class="writing-list">
+          <div class="writing-item">
+            <div class="writing-thumb"></div>
+            <div class="writing-meta">
+              <span class="writing-date">Jan 15, 2026</span>
+              <a href="blog/posts/how-authenticator-apps-generate-otps.html" class="writing-title">Understanding How Authenticator Apps Generate OTPs Offline</a>
+            </div>
+            <a href="blog/posts/how-authenticator-apps-generate-otps.html" class="writing-arrow" aria-label="Read post"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+          </div>
+          <div class="writing-item">
+            <div class="writing-thumb"></div>
+            <div class="writing-meta">
+              <span class="writing-date">Sep 23, 2024</span>
+              <a href="blog/posts/observer-pattern-python.html" class="writing-title">Observer Pattern with Python</a>
+            </div>
+            <a href="blog/posts/observer-pattern-python.html" class="writing-arrow" aria-label="Read post"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+          </div>
+          <div class="writing-item">
+            <div class="writing-thumb"></div>
+            <div class="writing-meta">
+              <span class="writing-date">Sep 16, 2024</span>
+              <a href="blog/posts/strategy-pattern-python.html" class="writing-title">Strategy Pattern with Python</a>
+            </div>
+            <a href="blog/posts/strategy-pattern-python.html" class="writing-arrow" aria-label="Read post"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+          </div>
+        </div>
+        <p class="section-more"><a href="blog/index.html">All posts <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a></p>
       </div>
     </section>
 
