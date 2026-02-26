@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How * and + Work in Regex — Khyrul Bashar</title>
+  <meta name="description" content="A clear explanation of the + and * quantifiers in regular expressions, with practical examples." />
+  <meta property="og:title" content="How * and + Work in Regex" />
+  <meta property="og:description" content="A clear explanation of the + and * quantifiers in regular expressions, with practical examples." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">How * and + Work in Regex</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2018-09-12">Sep 12, 2018</time>
+            <div class="post-tags"><span class="tag">regex</span>
+<span class="tag">explainer</span></div>
+          </div>
+          <p class="post-description">A clear explanation of the + and * quantifiers in regular expressions, with practical examples.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p><code>+</code> and <code>*</code> are both quantifiers. They don't themselves match any pattern but check for repetition or presence of the pattern they follow. One example will clear things up.</p>
+<p>Assume we want to match some numbers:</p>
+<ul>
+<li>9</li>
+<li>90</li>
+<li>234</li>
+<li>2275258292335728520</li>
+</ul>
+<p>To match numbers we can use character class <code>[0-9]</code> or <code>\d</code>, both work the same. But there is one problem — <code>\d</code> or <code>[0-9]</code> both match a number with one digit only, i.e. will match 9 but not numbers with more digits. So to match two digit numbers our regex should be <code>\d\d</code>, for three digits <code>\d\d\d</code> and so on. You see the problem?</p>
+<p>Firstly, it's tiring to write repeating characters and secondly what if we don't know the count of digits beforehand. Here come the quantifiers to the rescue.</p>
+<p><code>+</code> → matches <strong>one or more</strong> of the pattern it's used after.<br />
+<code>*</code> → matches <strong>zero or more</strong> of the pattern it's used after.</p>
+<p>Going back to the previous example, we want to match numbers be it one digit or more. We make our regex <code>\d+</code> — one <code>+</code> after the digit-matching pattern <code>\d</code>. Now it matches all of the numbers.</p>
+<p>Now let's imagine a scenario where we want to match <code>a</code> that has no <code>b</code> after it, or lots of <code>b</code>:</p>
+<ul>
+<li>a</li>
+<li>ab</li>
+<li>abbbb</li>
+</ul>
+<p>We need a regex that matches all three. If we write <code>ab+</code> we fail to match the lone <code>a</code>, because <code>+</code> requires at least one <code>b</code>. Here we use <code>*</code>. It matches none or more of the pattern, so <code>ab*</code> matches all three strings including the first where there is no <code>b</code>.</p>
+<p>Hope this demystifies <code>*</code> and <code>+</code> for you.</p>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

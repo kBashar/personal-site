@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>On Writing More in 2026 — Khyrul Bashar</title>
+  <meta name="description" content="Why I'm committing to writing regularly this year, and the simple system I'm using to make it stick." />
+  <meta property="og:title" content="On Writing More in 2026" />
+  <meta property="og:description" content="Why I'm committing to writing regularly this year, and the simple system I'm using to make it stick." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">On Writing More in 2026</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2026-01-15">Jan 15, 2026</time>
+            <div class="post-tags"><span class="tag">writing</span>
+<span class="tag">meta</span></div>
+          </div>
+          <p class="post-description">Why I'm committing to writing regularly this year, and the simple system I'm using to make it stick.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p>I've started and abandoned a blog three times in the last five years. Each time the pattern was the same: burst of enthusiasm, two or three posts, then silence for six months, then an awkward "I'm back!" post that led nowhere.</p>
+<p>This year I want it to go differently. Here's what I think was wrong before, and what I'm trying instead.</p>
+<h2 id="what-went-wrong">What Went Wrong</h2>
+<p><strong>I treated posts like essays.</strong> An essay takes days to research, draft, and revise. If that's the bar, I'll never ship anything. Most of what I know isn't essay-shaped — it's "here's the thing I figured out this week."</p>
+<p><strong>I optimized for an audience I don't have yet.</strong> I'd imagine a reader who already knew a lot, then try to add novelty on top. Better to write for the person I was six months ago.</p>
+<p><strong>The tooling got in the way.</strong> A CMS means a login. A complex static site generator means a deploy pipeline to maintain. Friction at the moment of writing is fatal.</p>
+<h2 id="what-im-trying-this-time">What I'm Trying This Time</h2>
+<p><strong>Low bar for publishing.</strong> If it took me more than an hour to figure something out, it's probably worth a post. It doesn't need to be comprehensive. It just needs to be true and specific.</p>
+<p><strong>No scheduling.</strong> I've tried "post every Tuesday." It creates a deadline without a reason. I'd rather write when I have something to say and let the frequency be whatever it is.</p>
+<p><strong>Plain Markdown files on disk.</strong> I open a <code>.md</code> file, write, run <code>python build.py</code>, commit. No admin panel, no CMS, no friction. The post is just a file — I can grep it, version it, delete it.</p>
+<h2 id="on-audience">On Audience</h2>
+<p>The most useful technical posts I've read weren't written for me specifically. They were written by someone who'd been stuck on exactly the problem I had, and they wrote it down so they wouldn't forget.</p>
+<p>That's the goal. If future-me (or someone with the same problem) finds this useful, that's enough. The audience doesn't need to be large to make the writing worthwhile.</p>
+<hr />
+<p>If you're reading this in late 2026, check the post count. That'll tell you whether this actually worked.</p>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

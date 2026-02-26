@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>git tag — Khyrul Bashar</title>
+  <meta name="description" content="A quick reference on git tag — creating, listing, pushing, and the difference between lightweight and annotated tags." />
+  <meta property="og:title" content="git tag" />
+  <meta property="og:description" content="A quick reference on git tag — creating, listing, pushing, and the difference between lightweight and annotated tags." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">git tag</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2022-11-24">Nov 24, 2022</time>
+            <div class="post-tags"><span class="tag">git</span>
+<span class="tag">devtools</span></div>
+          </div>
+          <p class="post-description">A quick reference on git tag — creating, listing, pushing, and the difference between lightweight and annotated tags.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p><code>git tag</code> marks a specific commit in the source repository. A common use case is to denote software release versions by marking the points of commit history where the software was stable to release.</p>
+<ol>
+<li><code>git tag</code> gives the list of all tags.</li>
+<li><code>git tag &lt;tagname&gt;</code> creates a tag named <strong>tagname</strong>. This tag points to the commit that was HEAD at the time of tag creation.</li>
+<li>Tags can be made to point to any commit, not just HEAD.</li>
+<li>Tags are not pushed to the remote by default. Use <code>git push &lt;remotename&gt; &lt;tagname&gt;</code> to push one.</li>
+<li>To push all tags at once: <code>git push &lt;remotename&gt; --tags</code></li>
+<li><code>git tag -d &lt;tagname&gt;</code> deletes a tag from the repo.</li>
+<li>There are two types of tags: <strong>lightweight</strong> and <strong>annotated</strong>. Lightweight tags have only a name. Annotated tags contain additional metadata — the author's name, email, and an annotation message. By default <code>git tag &lt;tagname&gt;</code> creates a lightweight tag. To create an annotated tag: <code>git tag -a -m "annotation msg" &lt;tagname&gt;</code>.</li>
+</ol>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patch One: Recent Files Feature — Khyrul Bashar</title>
+  <meta name="description" content="Notes from my first GSoC patch — implementing the recent files feature for PDFDebugger and a lesson on Java's Preference API." />
+  <meta property="og:title" content="Patch One: Recent Files Feature" />
+  <meta property="og:description" content="Notes from my first GSoC patch — implementing the recent files feature for PDFDebugger and a lesson on Java's Preference API." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">Patch One: Recent Files Feature</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2015-06-01">Jun 1, 2015</time>
+            <div class="post-tags"><span class="tag">gsoc</span>
+<span class="tag">open-source</span>
+<span class="tag">java</span></div>
+          </div>
+          <p class="post-description">Notes from my first GSoC patch — implementing the recent files feature for PDFDebugger and a lesson on Java's Preference API.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p>Main code for this patch was ready for GSOC as I've coded it <a href="https://issues.apache.org/jira/browse/PDFBOX-2748">earlier</a> for PDFReader of the PDFBox tools. So it was just about reusing the RecentFiles class with PDFDebugger.</p>
+<p>From this patch I've learnt an interesting thing. In RecentFiles class I've used Preference API of java to store application preference data. <a href="http://docs.oracle.com/javase/7/docs/api/java/util/prefs/Preferences.html">Preference API</a> gives you one instance per Package.</p>
+<p>PDFReader and PDFDebugger both are in same the package so they show the same recent files log. Though I was first confused about the behaviour and was planning to move PDFDebugger to a new package but Tilman happened to like it :). So a potential bug became a feature. :)</p>
+<h3 id="patch-link">Patch link</h3>
+<p><a href="https://issues.apache.org/jira/browse/PDFBOX-2530?focusedCommentId=14553244&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-14553244">Jira comment of the patch</a></p>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

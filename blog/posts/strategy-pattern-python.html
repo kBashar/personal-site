@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategy Pattern with Python — Khyrul Bashar</title>
+  <meta name="description" content="A practical guide to the Strategy design pattern in Python, using a payment processor as the running example." />
+  <meta property="og:title" content="Strategy Pattern with Python" />
+  <meta property="og:description" content="A practical guide to the Strategy design pattern in Python, using a payment processor as the running example." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">Strategy Pattern with Python</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2024-09-16">Sep 16, 2024</time>
+            <div class="post-tags"><span class="tag">python</span>
+<span class="tag">design-patterns</span></div>
+          </div>
+          <p class="post-description">A practical guide to the Strategy design pattern in Python, using a payment processor as the running example.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p>This article introduces strategy design pattern with examples and use cases. The example codes are in Python, and a brief intro to Python abstract classes is included.</p>
+<h2 id="strategy-pattern">Strategy Pattern</h2>
+<p>Strategy pattern suggests a simple but very useful paradigm to design OOP systems where there are multiple algorithms/strategies to do a task. The pattern prescribes encapsulating algorithms into a common interface and using that interface to invoke those algorithms. This gives the client (the part of the code that uses the algorithms) the flexibility to choose any algorithm at runtime.</p>
+<h2 id="example-scenarios">Example Scenarios</h2>
+<p>Let's think of the map app we all have in our phones. Users can find routes from place A to place B, and the app gives us a couple of possible modes of transportation — walking, cycling, bike riding, public bus or car — along with the time each would take.</p>
+<p>This feature is a nice candidate for the strategy pattern. Modes of transportation are different algorithms/strategies and a common interface provides the travel time from A to B.</p>
+<p>Let's look at another example. A payment processor in an e-commerce site can accept payment in multiple ways — cards, MFS (Mobile Financial System), or cryptocurrency. Designing this payment processor is a prime candidate for strategy pattern. Here modes of payment are the algorithms, and the payment processor is the client.</p>
+<h2 id="code-examples">Code Examples</h2>
+<p>Examples with code are even better. Here I will use Python, but this pattern — or any design pattern for that matter — is applicable and implementable in all OOP-supported languages.</p>
+<p>So, we are designing a service for processing payments for an e-commerce site. For starters, users can pay through Visa and Mastercard. What would the code structure look like?</p>
+<pre><code class="language-python"># visa card related processing
+def visa_pay(self, amount):
+  print(&quot;Doing visa card related processing&quot;)
+  print(f&quot;Receiving a payment through Visa card of amount {amount}&quot;)
+
+# master card related processing
+def master_pay(self, amount):
+  print(&quot;Doing Master card related processing&quot;)
+  print(f&quot;Receiving a payment through Master card of amount {amount}&quot;)
+
+# this is our payment processor
+def payment_processor(payment_type: str, amount: float):
+  if payment_type == &quot;visa&quot;:
+    visa_pay(amount)
+  else payment_type == &quot;master&quot;:
+    master_pay(amount)
+</code></pre>
+<p>Simple, right? Now what if users want to pay with American Express (Amex)? We add another function <code>amex_pay</code> and update <code>payment_processor</code>:</p>
+<pre><code class="language-python">...
+
+def amex_pay(self, amount):
+  print(&quot;Doing Amex card related processing&quot;)
+  print(f&quot;Receiving a payment through Amex card of amount {amount}&quot;)
+
+
+def payment_processor(payment_type: str, amount: float):
+  if payment_type == &quot;visa&quot;:
+    visa_pay(amount)
+  elif payment_type == &quot;master&quot;:
+    master_pay(amount)
+  elif payment_type == &quot;amex&quot;:
+    amex_pay(amount)
+</code></pre>
+<p>No matter how simple this looks, one thing is clear: every time we add a new payment mode we have to change <code>payment_processor</code> in addition to adding the new payment code. Our <code>payment_processor</code> is tightly coupled to individual payment modes, even though all of them take the same arguments and return the same data.</p>
+<p>In cases such as this, <strong>Strategy Pattern</strong> suggests a better way to organise our code and make it more extensible and portable. The suggestion: payment modes share a common interface and <code>payment_processor</code> codes to that interface instead of to individual functions. New payment modes can be added without changing <code>payment_processor</code> at all — they'll be supported right out of the bat.</p>
+<p>Let's try it out. But before that, some Python language prerequisites. If you're familiar with Python's abstract class system, you may skip the next section and jump straight to the code.</p>
+<h3 id="abstract-class-in-python">Abstract Class in Python</h3>
+<p>An interface provides a blueprint through abstract functions, and interface-implementing classes must concretely implement those abstract functions. All classes that implement the same interface will therefore have the same API.</p>
+<p>Python has no <code>interface</code> keyword as Java does. Abstract classes give us the same facility. We declare an abstract class with abstract methods; all concrete subclasses must implement those methods, giving them the same methods.</p>
+<p>To get abstract classes we use the <code>abc</code> module from Python's standard library. It supplies two components: <code>ABC</code> (the base class all abstract classes must inherit) and <code>abstractmethod</code> (a decorator marking methods that subclasses must implement).</p>
+<h3 id="code-example-of-strategy-pattern">Code Example of Strategy Pattern</h3>
+<p>Now let's hop into the code-wagon.</p>
+<pre><code class="language-python">from abc import ABC, abstractmethod
+
+# our interface made out of an abstract class.
+class PaymentInterface(ABC):
+
+  # all payment mode will implement this abstract method
+  @abstractmethod
+  def pay(self, amount):
+    pass
+
+
+class VisaPayment(PaymentInterface):   # inherits the PaymentInterface and implements the `pay` method
+
+  def pay(self, amount):
+    print(&quot;Doing visa card related processing&quot;)
+    print(f&quot;Receiving a payment through Visa of amount {amount}&quot;)
+
+
+class MasterPayment(PaymentInterface):
+
+  def pay(self, amount):
+    print(&quot;Doing Master card related processing&quot;)
+    print(f&quot;Receiving a payment through Master of amount {amount}&quot;)
+
+
+class AmexPayment(PaymentInterface):
+
+  def pay(self, amount):
+    print(&quot;Doing Amex card related processing&quot;)
+    print(f&quot;Receiving a payment through Amex of amount {amount}&quot;)
+
+
+def payment_processor(payment_method: PaymentInterface, amount: float):
+  payment_method.pay(amount)
+</code></pre>
+<p><code>payment_processor</code> looks <strong>clean</strong> and is very <strong>unlikely to need change</strong> if we add new payment modes. Adding Bkash (MFS) only requires a new <code>BkashPayment</code> class — no change in <code>payment_processor</code>. This is neat and a win for code maintainability.</p>
+<p>How do we map names to actual payment methods at runtime? One example:</p>
+<pre><code class="language-python">class PaymentService:
+    def __init__(self):
+        self.payment_methods = {
+            &quot;visa&quot;: VisaPayment(),
+            &quot;master&quot;: MasterPayment(),
+            &quot;amex&quot;: AmexPayment()
+        }
+
+    def process_payment(self, method: str, amount: float):
+        if method not in self.payment_methods:
+            raise ValueError(f&quot;Unsupported payment method: {method}&quot;)
+
+        payment_method = self.payment_methods[method]
+        payment_processor(payment_method, amount)
+</code></pre>
+<p>The class initializes a dictionary that maps payment method names to <code>PaymentInterface</code> implementations. When a new payment method is added, we add the corresponding class and a single entry in the mapper. This mapper part is totally dependent on the context of implementation.</p>
+<h3 id="when-to-use-strategy-pattern">When to Use Strategy Pattern</h3>
+<ul>
+<li>You've got a bunch of related algorithms and want to switch between them dynamically.</li>
+<li>You want to avoid a monster <code>if-elif-else</code> chain in your code. Trust me, future you will thank present you for not creating that mess.</li>
+</ul>
+<p>Remember, design patterns are tools, not rules. Use them only when you have time and reason to do so.</p>
+<p><strong>Skip the Strategy Pattern when:</strong></p>
+<ul>
+<li>You've only got a couple of algorithms that rarely change.</li>
+<li>The algorithms and their context are very simple. Sometimes a plain <code>if-else</code> is all you need. Don't over-complicate things!</li>
+</ul>
+<h3 id="wrapping-up">Wrapping Up</h3>
+<p>Strategy pattern is a cool code-toolkit. It gives us:</p>
+<ul>
+<li><strong>Flexibility:</strong> add new strategies or algorithms without changing or impacting existing client code.</li>
+<li><strong>Cleaner Code:</strong> no more long <code>if-elif-else</code> chains.</li>
+</ul>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

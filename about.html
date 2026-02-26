@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Khyrul Bashar</title>
+  <meta name="description" content="About Khyrul Bashar — background, skills, and work history." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Work</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="photography.html">Photos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- ── Page header ──────────────────────────────────────── -->
+      <div class="page-header">
+        <h1 class="page-title">About</h1>
+        <p class="page-subtitle">
+          A bit about who I am, what I've worked on, and what I care about.
+        </p>
+      </div>
+
+      <!-- ── Bio ──────────────────────────────────────────────── -->
+      <section class="section" style="border-top: none; padding-top: 0;">
+        <p style="font-size: 1.05rem; line-height: 1.8; max-width: 44rem; margin-bottom: var(--sp-5);">
+          I'm Khyrul Bashar (Jubayer) — a senior backend engineer based in Dhaka, Bangladesh.
+          I've spent the last six years building Python-based systems across IoT automation,
+          AI-powered SaaS, and industrial observability — from embedded device backends to
+          LLM-orchestrated pipelines shipping to production in Tokyo.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; max-width: 44rem; margin-bottom: var(--sp-5);">
+          My arc has gone from systems programming (GSoC at Apache Foundation) through IoT R&amp;D
+          leadership, into the Gen-AI/RAG space. I'm drawn to the intersection of reliable
+          infrastructure and emerging AI capabilities — making sure the "magic" is actually
+          grounded in systems that don't page you at 3 AM.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; max-width: 44rem;">
+          I care about observability, clean API contracts, and documentation that survives
+          the original author leaving. Open to backend-heavy, SRE, and DevOps roles where
+          those values matter.
+        </p>
+      </section>
+
+      <!-- ── Skills ───────────────────────────────────────────── -->
+      <section class="section">
+        <h2 class="section-heading">Skills</h2>
+        <div class="skills-grid">
+          <div class="skills-group">
+            <h3>Languages</h3>
+            <ul>
+              <li>Python</li>
+              <li>JavaScript / TypeScript</li>
+              <li>Java</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+          <div class="skills-group">
+            <h3>Frameworks &amp; AI</h3>
+            <ul>
+              <li>FastAPI</li>
+              <li>Django</li>
+              <li>React</li>
+              <li>Pydantic-AI</li>
+              <li>RAG / LLM (OpenAI, Anthropic, Ollama)</li>
+            </ul>
+          </div>
+          <div class="skills-group">
+            <h3>Databases &amp; Infra</h3>
+            <ul>
+              <li>PostgreSQL</li>
+              <li>MongoDB</li>
+              <li>ElasticSearch</li>
+              <li>Redis · Qdrant</li>
+              <li>Docker · AWS · Terraform</li>
+            </ul>
+          </div>
+          <div class="skills-group">
+            <h3>Observability &amp; CI/CD</h3>
+            <ul>
+              <li>Prometheus · Grafana</li>
+              <li>Loki · Jaeger</li>
+              <li>GitHub Actions</li>
+              <li>Jenkins</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Timeline ─────────────────────────────────────────── -->
+      <section class="section">
+        <h2 class="section-heading">Work History</h2>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-period">01/2025 — Present</div>
+            <div>
+              <div class="timeline-role">Senior Software Engineer</div>
+              <div class="timeline-company">Cefalo, Dhaka</div>
+              <p class="timeline-desc">
+                Building an industrial observability platform (Kelda Dynamics project) —
+                real-time telemetry ingestion, Prometheus/Grafana/Loki/Jaeger stack,
+                FastAPI backend, and CI/CD via Jenkins.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">09/2023 — 12/2024</div>
+            <div>
+              <div class="timeline-role">Software Engineer</div>
+              <div class="timeline-company">Gigalogy, Dhaka (client: Tokyo, Japan)</div>
+              <p class="timeline-desc">
+                Backend lead on a multi-tenant RAG SaaS platform. Designed document
+                ingestion pipelines, semantic search over Qdrant, and LLM-orchestrated
+                Q&amp;A using OpenAI and Anthropic APIs.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">04/2022 — 08/2023</div>
+            <div>
+              <div class="timeline-role">R&amp;D Team Lead</div>
+              <div class="timeline-company">Unipolar Automation Technologies, Dhaka</div>
+              <p class="timeline-desc">
+                Led R&amp;D for IoT automation products. Designed MQTT-based device
+                communication layers, built MLOps pipelines for predictive maintenance,
+                and introduced observability practices across the engineering team.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">07/2019 — 03/2022</div>
+            <div>
+              <div class="timeline-role">Software Engineer</div>
+              <div class="timeline-company">Unipolar Automation Technologies, Dhaka</div>
+              <p class="timeline-desc">
+                Developed backend services for industrial IoT systems using Django and
+                FastAPI. Integrated with hardware devices, built REST APIs for mobile
+                and web clients, and managed AWS deployments.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">04/2015 — 08/2015</div>
+            <div>
+              <div class="timeline-role">GSoC Intern</div>
+              <div class="timeline-company">Apache Foundation (PDFBox), Remote</div>
+              <p class="timeline-desc">
+                Contributed a PDF debugger feature to Apache PDFBox as part of
+                Google Summer of Code. Worked with the open-source Java codebase
+                under mentorship from the PDFBox committers.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Education & Certifications ───────────────────────── -->
+      <section class="section">
+        <h2 class="section-heading">Education &amp; Certifications</h2>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-period">B.Sc. CSE</div>
+            <div>
+              <div class="timeline-role">Bachelor of Science in Computer Science &amp; Engineering</div>
+              <div class="timeline-company">Chittagong University of Engineering and Technology (CUET)</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">Certificate</div>
+            <div>
+              <div class="timeline-role">OWASP Top 10:2021 in Python</div>
+              <div class="timeline-company">SecureFlag</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Awards ────────────────────────────────────────────── -->
+      <section class="section">
+        <h2 class="section-heading">Awards</h2>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-period">AI Hackathon</div>
+            <div>
+              <div class="timeline-role">2nd Runner-up — ConvoPilot project</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">ICPSD'14</div>
+            <div>
+              <div class="timeline-role">2nd Runner-up — International Contest on Programming &amp; Systems Development</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">May 2014</div>
+            <div>
+              <div class="timeline-role">1st Runner-up — National Android Apps Development Training</div>
+              <div class="timeline-company">Ministry of ICT, Bangladesh</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography — Khyrul Bashar</title>
+  <meta name="description" content="Photography by Khyrul Bashar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Work</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="photography.html">Photos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- ── Page header ──────────────────────────────────────── -->
+      <div class="page-header">
+        <h1 class="page-title">Photography</h1>
+        <p class="page-subtitle">
+          I spend a lot of time looking at screens. Photography is how I remember
+          to look at everything else.
+        </p>
+      </div>
+
+      <!-- ── Photo grid ───────────────────────────────────────── -->
+      <!--
+        To add photos: drop your files into assets/images/photography/
+        and add a <figure class="photo-item"> block for each one below.
+        Optional: add a <figcaption> inside the figure for a caption.
+      -->
+      <section class="section" style="border-top: none; padding-top: 0;">
+        <div class="photo-grid">
+
+          <figure class="photo-item">
+            <img src="assets/images/photography/photo-01.jpg" alt="" loading="lazy" />
+          </figure>
+
+          <figure class="photo-item">
+            <img src="assets/images/photography/photo-02.jpg" alt="" loading="lazy" />
+          </figure>
+
+          <figure class="photo-item">
+            <img src="assets/images/photography/photo-03.jpg" alt="" loading="lazy" />
+          </figure>
+
+          <figure class="photo-item">
+            <img src="assets/images/photography/photo-04.jpg" alt="" loading="lazy" />
+          </figure>
+
+          <figure class="photo-item">
+            <img src="assets/images/photography/photo-05.jpg" alt="" loading="lazy" />
+          </figure>
+
+          <figure class="photo-item">
+            <img src="assets/images/photography/photo-06.jpg" alt="" loading="lazy" />
+          </figure>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

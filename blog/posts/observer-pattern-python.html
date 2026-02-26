@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observer Pattern with Python — Khyrul Bashar</title>
+  <meta name="description" content="A comprehensive guide to the Observer design pattern in Python, illustrated with a smart home example and full working code." />
+  <meta property="og:title" content="Observer Pattern with Python" />
+  <meta property="og:description" content="A comprehensive guide to the Observer design pattern in Python, illustrated with a smart home example and full working code." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">Observer Pattern with Python</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2024-09-29">Sep 29, 2024</time>
+            <div class="post-tags"><span class="tag">python</span>
+<span class="tag">design-patterns</span></div>
+          </div>
+          <p class="post-description">A comprehensive guide to the Observer design pattern in Python, illustrated with a smart home example and full working code.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p>This article discusses situations where the observer pattern is a better option and why. First we go through some example scenarios and then the implementation details of the pattern.</p>
+<h2 id="introduction">Introduction</h2>
+<p>In many systems, one object changes and other objects of the system are interested to know about that change.</p>
+<p>Objects that are interested to know about the change are called <strong><code>observers</code></strong> and we will call the interesting object <strong><code>subject</code></strong>. <code>Observers</code> observe the change of state in <code>Subject</code>. <em>Change of state</em> is a fancy way of saying some variable or attribute's value has changed.</p>
+<p>This is a one-to-many relation, where a subject's change is propagated to many observers. <strong>Observer pattern</strong> suggests a robust and flexible architecture to implement this <code>Observer</code> and <code>Subject</code> relation.</p>
+<h2 id="example-scenarios">Example Scenarios</h2>
+<h3 id="phone-otp-messages">Phone OTP messages</h3>
+<p>Bank apps often send OTPs for verification and automatically fill the code once received. The bank app knows a new message has arrived as soon as it arrives — and this is not special for bank apps, all kinds of apps have this nice automated message-reading and form fill-up feature.</p>
+<p>Interested applications are notified on arrival of a message. Message inbox is the <strong><code>Subject</code></strong> and the apps waiting for OTP messages are <strong><code>Observers</code></strong>.</p>
+<h3 id="e-commerce-dashboard">E-Commerce Dashboard</h3>
+<p>In an e-commerce dashboard, display cards show <strong>total order count</strong>, <strong>average revenue per order</strong>, and <strong>sales trends</strong> — all of which depend on the sales count. Whenever there is a new sale, these cards need to be updated.</p>
+<p>The three display cards are <strong><code>Observers</code></strong> and they are observing <strong><code>Subject</code></strong> sales count.</p>
+<h3 id="smart-home">Smart Home</h3>
+<p>We will use this example later in our code example below.</p>
+<p>Our smart room has different smart devices — security cameras, lights, thermostats etc. For demonstration purposes we will consider the simplest interactions. Devices like cameras and lights respond to changes in room occupancy:</p>
+<ul>
+<li>Security cameras activate when there is human presence.</li>
+<li>Smart lights turn off automatically when there is no one in the room.</li>
+</ul>
+<p>In this case:</p>
+<ul>
+<li>Smart room is the <strong><code>Subject</code></strong>.</li>
+<li>Devices like cameras and lights are <strong><code>Observers</code></strong> that need to update their behaviour based on the room's status.</li>
+</ul>
+<p>Now that we have built the intuition of how <code>Observers</code> and <code>Subject</code> look in a system, let's find out how they interact.</p>
+<h2 id="how-to-notify-observers">How to Notify Observers?</h2>
+<p>The question is: how do we let <code>Observers</code> know the state of the <code>Subject</code> has changed?</p>
+<p>We have two options:</p>
+<ol>
+<li><code>Observers</code> <strong>poll</strong> the data at an interval to check if the <code>Subject</code>'s state has changed.</li>
+<li><code>Subject</code> <strong>pushes</strong> the update to the <code>Observers</code> whenever there is a change in its state.</li>
+</ol>
+<p>Polling is simple to implement but may miss rapid changes and real-time updates. There is potential for resource wastage.<br />
+Pushing gives real-time updates, efficient use of resources, and ensures all changes are captured — though it is more complex to implement.</p>
+<p>As our scenarios need a prompt reaction to <code>Subject</code> state changes, pushing notification is the better option.</p>
+<p>And here comes the <strong>observer pattern</strong> — suggesting a loosely coupled code organisation that lets <code>Subject</code> notify its <code>Observers</code> about updates without knowing much about <code>Observer</code> class internals. Both <code>Subject</code> and <code>Observers</code> implement certain interfaces and communicate through those interfaces.</p>
+<h2 id="uml-class-diagram">UML Class Diagram</h2>
+<p>Observer pattern's UML class diagram clarifies the relation and interaction between <code>subject</code> and <code>observers</code>.</p>
+<p><img alt="Observer pattern class diagram" src="../../assets/images/observer_class_diagram.png" /></p>
+<p>We have two interfaces <strong>Subject</strong> and <strong>Observer</strong>. While interfaces provide a blueprint, concrete implementations actually implement the methods.</p>
+<p><strong>Subject</strong> has one attribute and three methods:</p>
+<ol>
+<li><strong><code>addObserver</code></strong>: lets an observer <strong>register</strong> itself for notifications from the Subject. After being added to the subject's observer list, it will be notified on updates.</li>
+<li><strong><code>removeObserver</code></strong>: if the observer no longer wants to listen to changes, it can <strong>remove</strong> itself from the list and will not be bothered anymore.</li>
+<li><strong><code>notifyObservers</code></strong>: does the work of notifying the subject's observers. When notifying an observer on the change, usually the changed data is also sent out. Another way is for the observer to fetch the data after it gets notified. We'll use the second option in our example code.</li>
+</ol>
+<p>Any and all classes that want to act as a <strong>Subject</strong> must implement the above 3 methods.</p>
+<p>The <code>Observer</code> interface has one method <code>update</code>. Concrete observer classes must implement this method.</p>
+<ol>
+<li><strong><code>update</code></strong>: called from the Subject's <code>notifyObservers</code> method to let the observer know of a state change. Observer will write logic to respond to the change here.</li>
+</ol>
+<h2 id="example-code-for-observer-pattern">Example Code for Observer Pattern</h2>
+<p>Goal: a smart home system with rooms, security cameras, and lights. Camera and light respond to the presence of persons in the room.</p>
+<p>From the discussion above, observers are <strong><code>Light</code></strong> and <strong><code>Camera</code></strong>, and <strong><code>Room</code></strong> is our subject. Whenever the state of the room changes, light and camera will be notified.</p>
+<p>Our examples are in Python. Python doesn't have the concept of Interface; we achieve the same using its Abstract Class concept. A brief on abstract classes is <a href="/blog/posts/strategy-pattern-python.html">here</a> — look for the <strong>Abstract Class in Python</strong> section. We will skip that discussion here as the article is already quite large.</p>
+<h3 id="subject-and-observer-interfaces">Subject and Observer Interfaces</h3>
+<p>First we design our <strong><code>Subject</code></strong> and <strong><code>Observer</code></strong> interfaces (abstract classes).</p>
+<pre><code class="language-python">from abc import ABC, abstractmethod
+
+
+class Observer(ABC):
+
+    @abstractmethod
+    def update(self):
+        pass
+
+
+class Subject(ABC):
+
+    @abstractmethod
+    def addObserver(self, observer: Observer):
+        pass
+
+    @abstractmethod
+    def removeObserver(self, observer: Observer):
+        pass
+
+    @abstractmethod
+    def notifyObservers(self):
+        pass
+</code></pre>
+<p>These classes are blueprints for our concrete classes. All abstract methods will be implemented there.</p>
+<h3 id="room-subject-concrete-class">Room Subject Concrete Class</h3>
+<p>We have one <strong><code>Subject</code></strong> class <strong><code>Room</code></strong>. It implements all three methods of the <code>Subject</code> interface and two extra methods to change and access its state. The implementation is kept simple with inline comments.</p>
+<pre><code class="language-python">class Room(Subject):
+
+    def __init__(self):
+        # initialize the observers list
+        self._observers = list()
+
+        # initialize the room with no person inside the room.
+        self._number_of_persons = 0
+        print(&quot;Initiated an empty room!&quot;)
+
+    # adds observer to the list
+    def addObserver(self, observer: Observer):
+        self._observers.append(observer)
+
+    # removes observer from the list
+    def removeObserver(self, observer: Observer):
+        self._observers.remove(observer)
+
+    # iterate through all listed observers and call their update method to notify them.
+    def notifyObservers(self):
+        for observer in self._observers:
+            observer.update()
+
+    # class specific methods
+
+    def setPerson(self, person: int):  # change the state
+        self._number_of_persons = person
+
+        # state has changed, let's notify the observers
+        self.notifyObservers()
+
+    def getPerson(self):  # access the state
+        return self._number_of_persons
+</code></pre>
+<p>Apart from implementing the 3 methods from <code>Subject</code>, it has two extra methods: <code>setPerson</code> and <code>getPerson</code>. These let outside code update or fetch the state of the <code>Room</code>. They are not mandatory for the pattern but necessary for the class to function in our context.</p>
+<h3 id="light-and-camera-observer-concrete-classes">Light and Camera Observer Concrete Classes</h3>
+<p>Now let's code the concrete observers. <code>Light</code> and <code>Camera</code> will first register themselves to the <code>Room</code> subject's observer list through <code>addObserver</code> and implement the <code>update</code> method to respond to state changes in <code>Room</code>.</p>
+<pre><code class="language-python">class Light(Observer):
+
+    def __init__(self, room: Room):
+        print(&quot;Initializing Lights!&quot;)
+        self._room = room
+
+        # register itself for door state change observation
+        self._room.addObserver(self)
+
+    def update(self):  # state of the room has changed
+
+        # access the state from the subject
+        number_of_persons = self._room.getPerson()
+
+        # take some actions based on changed states
+        if number_of_persons == 0:
+            print(f&quot;Light: Shutting down. {number_of_persons} persons in the room.&quot;)
+        else:
+            print(f&quot;Light: Keep running. {number_of_persons} persons in the room.&quot;)
+</code></pre>
+<pre><code class="language-python">class Camera(Observer):
+    def __init__(self, room: Room):
+        print(&quot;Initializing Security Camera!&quot;)
+        self._room = room
+
+        # register itself for door state change observation
+        self._room.addObserver(self)
+
+    def update(self):  # state of the room has changed
+        # access the state from the subject
+        number_of_persons = self._room.getPerson()
+
+        # take some actions based on changed states
+        if number_of_persons == 0:
+            print(f&quot;Camera: Shutting down. {number_of_persons} persons in the room.&quot;)
+        else:
+            print(f&quot;Camera: Keep running. {number_of_persons} persons in the room.&quot;)
+</code></pre>
+<p>Now let's add the calling code. First we initialise the <code>Room</code> instance and use it to initialise the <code>Light</code> and <code>Camera</code> instances. To update the number of persons in the room we call <code>room.setPerson()</code>, which in turn notifies and updates the state of <code>light</code> and <code>camera</code>.</p>
+<pre><code class="language-python">if __name__ == &quot;__main__&quot;:
+    room = Room()
+
+    light = Light(room)
+    camera = Camera(room)
+
+    room.setPerson(1)
+    room.setPerson(0)  # camera and light will turn off
+    room.setPerson(5)  # camera and light switched on again
+</code></pre>
+<p>Output:</p>
+<pre><code>Initiated an empty room!
+Initializing Lights!
+Initializing Security Camera!
+
+Light: Keep running. 1 persons in the room.
+Camera: Keep running. 1 persons in the room.
+
+Light: Shutting down. 0 persons in the room.
+Camera: Shutting down. 0 persons in the room.
+
+Light: Keep running. 5 persons in the room.
+Camera: Keep running. 5 persons in the room.
+</code></pre>
+<p>Full code is available in <a href="https://github.com/kBashar/writings/tree/main/design_patterns/observer_pattern">this GitHub repo</a>.</p>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>A few points on the observer pattern:</p>
+<ol>
+<li>When working in a multi-threaded system, keep thread safety in mind when implementing observer pattern.</li>
+<li>If real-time updates are not necessary, observer pattern might not be a good fit.</li>
+<li>There are variations of this pattern — not all use the same OOP structure but the essence is the same.</li>
+<li>In more complex systems, the <strong>Publish-Subscribe</strong> pattern might be more suitable as it decouples the message sender from the receiver more thoroughly.</li>
+</ol>
+<p>In conclusion, observer pattern is a handy toolkit for designing reactive systems. Web frameworks, UI frameworks, and event-driven programming systems use this pattern to bridge objects and establish communication channels. For developers working with these tools, observer pattern is a great mental model to have.</p>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

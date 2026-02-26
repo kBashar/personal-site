@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with GitHub Actions — Khyrul Bashar</title>
+  <meta name="description" content="A hands-on intro to GitHub Actions: build a workflow that compiles a Python script to an exe and publishes it as a release artifact." />
+  <meta property="og:title" content="Getting Started with GitHub Actions" />
+  <meta property="og:description" content="A hands-on intro to GitHub Actions: build a workflow that compiles a Python script to an exe and publishes it as a release artifact." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">Getting Started with GitHub Actions</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2022-12-17">Dec 17, 2022</time>
+            <div class="post-tags"><span class="tag">github</span>
+<span class="tag">ci-cd</span>
+<span class="tag">devtools</span></div>
+          </div>
+          <p class="post-description">A hands-on intro to GitHub Actions: build a workflow that compiles a Python script to an exe and publishes it as a release artifact.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p>Github Actions is a CI/CD platform. The full software development life cycle can be managed using GitHub Actions.</p>
+<p>To understand this tool we will go through an example implementation. All related concepts will be described along the way.</p>
+<h2 id="project-goal">Project Goal</h2>
+<p>Implement a GitHub Actions workflow that builds an exe from the project code and uploads it as a release artifact to the GitHub repository. This workflow runs whenever the repository owner pushes a new <code>tag</code>.</p>
+<h2 id="project-structure">Project Structure</h2>
+<p>We start with a tiny hello world Python project.</p>
+<pre><code>github-action-tutorial/
+├─ main.py
+├─ README.md
+├─ requirements.txt
+</code></pre>
+<p><code>main.py</code> takes a name as input and prints <code>hello &lt;name&gt;</code>. All code is <a href="https://github.com/kBashar/github-action-tutorial">here</a>.</p>
+<p>GitHub Actions has the following concepts, discussed in the order they appear in a workflow file. Full code is at <a href="#code">the end</a>.</p>
+<ul>
+<li><a href="#workflows">Workflows</a></li>
+<li><a href="#event">Event</a></li>
+<li><a href="#runner">Runner</a></li>
+<li><a href="#job">Job</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+<h3 id="workflows">Workflows</h3>
+<ul>
+<li>Workflows are <em>yml</em> files residing in <code>.github/workflows/</code> in a repository.</li>
+<li>A workflow defines operations to run when an event is triggered, and the computing platform to run them on.</li>
+<li>There can be more than one workflow in a repository, each triggered by different events.</li>
+<li>Example events: <code>push</code>, <code>pull_request</code>. See <a href="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows">all supported events</a>.</li>
+</ul>
+<p>We create <code>exe-releaser.yml</code> inside <code>.github/workflows/</code>. Updated project structure:</p>
+<pre><code>github-action-tutorial/
+├─ .github/
+│  ├─ workflows/
+│  │  ├─ exe-releaser.yml
+├─ main.py
+├─ README.md
+├─ requirements.txt
+</code></pre>
+<p>Start the workflow file with a name and run-name:</p>
+<pre><code class="language-yml">name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+</code></pre>
+<h3 id="event">Event</h3>
+<p>Workflows are triggered when a specific event happens. Our workflow should run whenever a <code>tag</code> is pushed:</p>
+<pre><code class="language-yml">on:
+  push:
+    tags:
+      - &quot;*&quot;
+</code></pre>
+<h3 id="runner">Runner</h3>
+<p>Each workflow job runs on a fresh virtual machine called a <strong>runner</strong>. GitHub provides Windows, Ubuntu, and macOS runners; you can also self-host.</p>
+<p>We use Windows to build the exe:</p>
+<pre><code class="language-yml">jobs:
+  build-release-exe:
+    runs-on: windows-latest
+</code></pre>
+<h3 id="job">Job</h3>
+<p>A job is a series of <strong>steps</strong>. Steps use either <code>uses</code> (a pre-built action) or <code>run</code> (a shell command).</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Check out the repository:</li>
+</ol>
+<pre><code class="language-yml">steps:
+  - name: Repo-Checkout
+    uses: actions/checkout@v3
+</code></pre>
+<ol>
+<li>Install Python. The <code>with</code> key passes input parameters to the action:</li>
+</ol>
+<pre><code class="language-yml">  - name: Setup Python
+    uses: actions/setup-python@v4
+    with:
+      python-version: '3.10'
+      cache: 'pip'
+      architecture: 'x64'
+</code></pre>
+<ol>
+<li>Install project dependencies:</li>
+</ol>
+<pre><code class="language-yml">  - name: Install Requirement
+    run: pip install -r requirements.txt
+</code></pre>
+<ol>
+<li>Build the exe with <a href="https://pyinstaller.org/en/stable/">PyInstaller</a>:</li>
+</ol>
+<pre><code class="language-yml">  - name: Build exe
+    run: PyInstaller --onefile main.py
+</code></pre>
+<ol>
+<li>Create a GitHub release and attach the exe using the community action <a href="https://github.com/ncipollo/release-action">ncipollo/release-action</a>:</li>
+</ol>
+<pre><code class="language-yml">  - name: Create Release
+    uses: ncipollo/release-action@v1
+    with:
+      artifacts: 'dist/main.exe'
+      artifactContentType: application/zip
+      removeArtifacts: true
+</code></pre>
+<h3 id="code">Code</h3>
+<p>Complete workflow:</p>
+<pre><code class="language-yml">name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+    tags:
+      - &quot;*&quot;
+jobs:
+  build-release-exe:
+    runs-on: windows-latest
+    steps:
+      - name: Repo Checkout
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: &quot;3.10&quot;
+          cache: &quot;pip&quot;
+          architecture: &quot;x64&quot;
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+      - name: Build exe
+        run: PyInstaller --onefile main.py
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: &quot;dist/main.exe&quot;
+          artifactContentType: application/zip
+          removeArtifacts: true
+</code></pre>
+<p><strong>Thanks for reading.</strong></p>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

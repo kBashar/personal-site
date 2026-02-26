@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Khyrul Bashar</title>
+  <meta name="description" content="Backend, AI, and IoT projects by Khyrul Bashar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Work</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="photography.html">Photos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- ── Page header ──────────────────────────────────────── -->
+      <div class="page-header">
+        <h1 class="page-title">Work</h1>
+        <p class="page-subtitle">
+          A selection of backend, AI, and IoT projects — from hackathon experiments
+          to production systems handling real workloads.
+        </p>
+      </div>
+
+      <!-- ── Projects ─────────────────────────────────────────── -->
+      <section class="section" style="border-top: none; padding-top: 0;">
+        <div class="grid-2">
+
+          <!-- ConvoPilot -->
+          <article class="project-card">
+            <div class="project-card-img-placeholder">convopilot</div>
+            <div class="project-card-body">
+              <h2 class="project-card-title">ConvoPilot <span class="tag" style="font-size: 0.75rem; vertical-align: middle;">🏆 2nd Runner-up</span></h2>
+              <p class="project-card-desc">
+                AI-powered conversational agent built during a hackathon. Runs entirely
+                on local LLMs via Ollama with fine-tuned models (UnSloth), uses Qdrant
+                for vector storage, and Pydantic-AI for structured agent orchestration.
+                Awarded 2nd runner-up at the AI Hackathon.
+              </p>
+              <ul class="project-card-tags" aria-label="Tech stack">
+                <li class="tag">Pydantic-AI</li>
+                <li class="tag">Ollama</li>
+                <li class="tag">Qdrant</li>
+                <li class="tag">UnSloth</li>
+                <li class="tag">FastAPI</li>
+                <li class="tag">PostgreSQL</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- RAG SaaS Platform -->
+          <article class="project-card">
+            <div class="project-card-img-placeholder">rag-saas</div>
+            <div class="project-card-body">
+              <h2 class="project-card-title">RAG SaaS Platform</h2>
+              <p class="project-card-desc">
+                Multi-tenant retrieval-augmented generation platform for a Tokyo-based AI startup.
+                Role: Backend Lead. Architected document ingestion pipelines, hybrid semantic
+                search over ElasticSearch + Qdrant, and LLM-orchestrated Q&amp;A with support
+                for both OpenAI and Anthropic models. Deployed on AWS ECS.
+              </p>
+              <ul class="project-card-tags" aria-label="Tech stack">
+                <li class="tag">FastAPI</li>
+                <li class="tag">PostgreSQL</li>
+                <li class="tag">ElasticSearch</li>
+                <li class="tag">Qdrant</li>
+                <li class="tag">OpenAI</li>
+                <li class="tag">Anthropic</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Industrial Observability Platform -->
+          <article class="project-card">
+            <div class="project-card-img-placeholder">observability</div>
+            <div class="project-card-body">
+              <h2 class="project-card-title">Industrial Observability Platform</h2>
+              <p class="project-card-desc">
+                End-to-end observability stack for industrial systems. Ingests real-time
+                telemetry from field devices, stores time-series data in PostgreSQL, and
+                surfaces metrics, logs, and traces through a unified Prometheus + Grafana +
+                Loki + Jaeger dashboard. CI/CD via Jenkins.
+              </p>
+              <ul class="project-card-tags" aria-label="Tech stack">
+                <li class="tag">FastAPI</li>
+                <li class="tag">PostgreSQL</li>
+                <li class="tag">Prometheus</li>
+                <li class="tag">Grafana</li>
+                <li class="tag">Loki</li>
+                <li class="tag">Jaeger</li>
+                <li class="tag">Jenkins</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ── Open source contributions ────────────────────────── -->
+      <section class="section">
+        <h2 class="section-heading">Open Source</h2>
+        <ul class="post-list" role="list">
+          <li class="post-list-item">
+            <span class="post-list-date">2015</span>
+            <a href="https://issues.apache.org/jira/projects/PDFBOX" target="_blank" rel="noopener noreferrer" class="post-list-title">
+              Apache PDFBox — PDF Debugger (Google Summer of Code)
+            </a>
+            <span class="post-list-read">Jira →</span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

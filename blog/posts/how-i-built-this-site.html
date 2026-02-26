@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I Built This Site — Khyrul Bashar</title>
+  <meta name="description" content="A walkthrough of the tooling behind this portfolio: pure HTML/CSS, a 100-line Python build script, and GitHub Actions for deployment." />
+  <meta property="og:title" content="How I Built This Site" />
+  <meta property="og:description" content="A walkthrough of the tooling behind this portfolio: pure HTML/CSS, a 100-line Python build script, and GitHub Actions for deployment." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../portfolio.html">Work</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../photography.html">Photos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="container">
+
+        <!-- ── Post header ────────────────────────────────────── -->
+        <header class="post-header prose">
+          <h1 class="post-title">How I Built This Site</h1>
+          <div class="post-meta">
+            <time class="post-meta-date" datetime="2026-02-20">Feb 20, 2026</time>
+            <div class="post-tags"><span class="tag">meta</span>
+<span class="tag">python</span>
+<span class="tag">web</span></div>
+          </div>
+          <p class="post-description">A walkthrough of the tooling behind this portfolio: pure HTML/CSS, a 100-line Python build script, and GitHub Actions for deployment.</p>
+        </header>
+
+        <!-- ── Post body ──────────────────────────────────────── -->
+        <div class="post-body prose">
+          <p>Every few years I rebuild my personal site from scratch. This time I wanted something I could fully understand, maintain without a framework, and deploy for free. Here's how it works.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>No JavaScript framework. Vanilla HTML, CSS, and a sprinkling of JS for the nav toggle.</li>
+<li>Markdown-based blog — I write posts in <code>.md</code> files, a build script converts them to HTML.</li>
+<li>Deployable to GitHub Pages with a single <code>git push</code>.</li>
+<li>Fast. No build step when loading the page, no runtime dependencies.</li>
+</ul>
+<h2 id="the-stack">The Stack</h2>
+<p><strong>Static HTML pages</strong> for everything that doesn't change frequently: home, about, portfolio, contact.</p>
+<p><strong>A Python build script</strong> (<code>build.py</code>) that reads Markdown files from <code>posts/</code>, injects them into an HTML template, and writes the result to <code>blog/posts/</code>. It also regenerates <code>blog/index.html</code> sorted by date.</p>
+<p><strong>GitHub Actions</strong> runs <code>build.py</code> on every push to <code>main</code>, then deploys the entire repo to GitHub Pages.</p>
+<h2 id="the-build-script">The Build Script</h2>
+<p>The script uses two libraries:</p>
+<pre><code class="language-python">import yaml      # for YAML front matter
+import markdown  # for converting .md bodies to HTML
+</code></pre>
+<p>Each post starts with YAML front matter:</p>
+<pre><code class="language-yaml">---
+title: &quot;How I Built This Site&quot;
+date: &quot;2026-02-20&quot;
+description: &quot;...&quot;
+tags: [&quot;meta&quot;, &quot;python&quot;]
+---
+</code></pre>
+<p>The script splits on the <code>---</code> delimiter, parses the YAML, converts the Markdown body, and fills an HTML template using simple <code>{{placeholder}}</code> substitution. No Jinja2, no template engine — just <code>str.replace()</code>.</p>
+<p>Total build time for a dozen posts: under a second.</p>
+<h2 id="css-architecture">CSS Architecture</h2>
+<p>All color tokens and spacing live in CSS custom properties at <code>:root</code>. A single <code>data-theme="dark"</code> attribute on <code>&lt;html&gt;</code> overrides the color tokens for dark mode. The toggle is about 10 lines of JS.</p>
+<pre><code class="language-css">:root {
+  --color-bg:     #F9F9F7;
+  --color-text:   #111111;
+  --color-accent: #0066CC;
+}
+
+[data-theme=&quot;dark&quot;] {
+  --color-bg:     #111111;
+  --color-text:   #E0E0E0;
+  --color-accent: #4D9FFF;
+}
+</code></pre>
+<p>No framework, no preprocessor. Just custom properties and <code>clamp()</code> for fluid type.</p>
+<h2 id="deployment">Deployment</h2>
+<p><code>.github/workflows/deploy.yml</code> does three things:</p>
+<ol>
+<li>Checks out the repo</li>
+<li>Installs deps and runs <code>python build.py</code></li>
+<li>Deploys the directory as a GitHub Pages artifact</li>
+</ol>
+<p>The generated HTML files are committed alongside source — so the site is always browsable directly from the repo, even if Actions is down.</p>
+<h2 id="what-id-do-differently">What I'd Do Differently</h2>
+<p>If I were building this for a team or a client, I'd reach for something more established — Eleventy, Astro, or Hugo. For a personal site I own completely and touch infrequently, the simplicity of "it's just files" is worth the occasional manual work.</p>
+<p>The total build tooling is about 150 lines of Python. I can read the whole thing in five minutes. That's the point.</p>
+        </div>
+
+        <!-- ── Post navigation ────────────────────────────────── -->
+        <nav class="post-nav prose" aria-label="Post navigation">
+          <a href="../index.html">← All posts</a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

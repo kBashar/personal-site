@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khyrul Bashar — Senior Backend Engineer</title>
+  <meta name="description" content="Senior Backend Engineer specializing in Python, FastAPI, Gen-AI/RAG systems, and cloud infrastructure." />
+  <meta property="og:title" content="Khyrul Bashar — Senior Backend Engineer" />
+  <meta property="og:description" content="Senior Backend Engineer specializing in Python, FastAPI, Gen-AI/RAG systems, and cloud infrastructure." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">Khyrul Bashar</a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Work</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="photography.html">Photos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ───────────────────────────────────────────────── -->
+    <section class="hero container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-label">Senior Backend Engineer</p>
+          <h1 class="hero-title">I build backends<br />that power AI.</h1>
+          <div class="hero-divider"></div>
+          <p class="hero-body">
+            6+ years shipping Python backends, RAG pipelines, and IoT systems —
+            from GSoC at Apache to leading AI product development at a Tokyo-based startup.
+            Currently exploring the overlap of Gen-AI and reliable distributed systems.
+          </p>
+          <div class="hero-actions">
+            <a href="portfolio.html" class="btn btn-primary">View My Work</a>
+            <a href="blog/index.html" class="btn btn-outline">Read the Blog</a>
+          </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <img src="assets/images/profile.jpg" alt="Khyrul Bashar" class="hero-photo" width="200" height="200" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Featured Work ──────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-heading">Recent Work</h2>
+        <div class="grid-2">
+
+          <article class="project-card">
+            <div class="project-card-img-placeholder">convopilot</div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">ConvoPilot</h3>
+              <p class="project-card-desc">
+                AI-powered conversational agent built for a hackathon — awarded
+                2nd runner-up. Uses local LLMs via Ollama and a RAG pipeline over
+                Qdrant for grounded, context-aware responses.
+              </p>
+              <ul class="project-card-tags" aria-label="Tech stack">
+                <li class="tag">Pydantic-AI</li>
+                <li class="tag">Ollama</li>
+                <li class="tag">Qdrant</li>
+                <li class="tag">FastAPI</li>
+              </ul>
+              <div class="project-card-links">
+                <a href="portfolio.html">→ View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card-img-placeholder">rag-saas</div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">RAG SaaS Platform</h3>
+              <p class="project-card-desc">
+                Multi-tenant retrieval-augmented generation platform serving a
+                Japanese AI product startup. Handles document ingestion, semantic
+                search, and LLM-orchestrated Q&amp;A at production scale.
+              </p>
+              <ul class="project-card-tags" aria-label="Tech stack">
+                <li class="tag">FastAPI</li>
+                <li class="tag">Qdrant</li>
+                <li class="tag">OpenAI</li>
+                <li class="tag">PostgreSQL</li>
+              </ul>
+              <div class="project-card-links">
+                <a href="portfolio.html">→ View Details</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <p style="margin-top: var(--sp-6); font-size: 0.9rem;">
+          <a href="portfolio.html">See all projects →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Latest Writing ─────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-heading">Latest Writing</h2>
+        <ul class="post-list" role="list">
+          <li class="post-list-item">
+            <span class="post-list-date">Jan 15, 2026</span>
+            <a href="blog/posts/how-authenticator-apps-generate-otps.html" class="post-list-title">Understanding How Authenticator Apps Generate OTPs Offline</a>
+            <span class="post-list-read">read →</span>
+          </li>
+          <li class="post-list-item">
+            <span class="post-list-date">Sep 23, 2024</span>
+            <a href="blog/posts/observer-pattern-python.html" class="post-list-title">Observer Pattern with Python</a>
+            <span class="post-list-read">read →</span>
+          </li>
+        </ul>
+        <p style="margin-top: var(--sp-6); font-size: 0.9rem;">
+          <a href="blog/index.html">All posts →</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Khyrul Bashar</p>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:khyrulbashar.0.1@gmail.com">email</a>
+          <a href="https://github.com/kBashar" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/khyrulbashar" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
