@@ -7,7 +7,7 @@
   <meta name="description" content="Writing about backend systems, infrastructure, and software engineering." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/blog.css" />
 </head>
@@ -30,7 +30,12 @@
           <li><a href="../photography.html">Photos</a></li>
           <li><a href="../contact.html">Contact</a></li>
           <li>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+          </li>
+          <li>
+            <a href="../assets/resume.pdf" class="btn-nav" download>Download Resume</a>
           </li>
         </ul>
       </nav>
@@ -38,9 +43,9 @@
   </header>
 
   <main>
-    <div class="container">
 
-      <!-- ── Page header ──────────────────────────────────────── -->
+    <!-- ── Page header ──────────────────────────────────────── -->
+    <div class="container">
       <div class="page-header">
         <h1 class="page-title">Blog</h1>
         <p class="page-subtitle">
@@ -48,15 +53,17 @@
           were better documented.
         </p>
       </div>
+    </div>
 
-      <!-- ── Post listing ─────────────────────────────────────── -->
-      <section class="section" style="border-top: none; padding-top: 0;">
+    <!-- ── Post listing ─────────────────────────────────────── -->
+    <section class="section-band section-band--alt">
+      <div class="container">
         <div class="blog-post-list">
           {{post_list_html}}
         </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
   </main>
 
   <!-- ── Footer ─────────────────────────────────────────────── -->

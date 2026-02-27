@@ -7,7 +7,7 @@
   <meta name="description" content="About Khyrul Bashar — background, skills, and work history." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -29,7 +29,12 @@
           <li><a href="photography.html">Photos</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">◑</button>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+          </li>
+          <li>
+            <a href="assets/resume.pdf" class="btn-nav" download>Download Resume</a>
           </li>
         </ul>
       </nav>
@@ -37,39 +42,43 @@
   </header>
 
   <main>
-    <div class="container">
 
-      <!-- ── Page header ──────────────────────────────────────── -->
+    <!-- ── Page header ──────────────────────────────────────── -->
+    <div class="container">
       <div class="page-header">
         <h1 class="page-title">About</h1>
-        <p class="page-subtitle">
-          A bit about who I am, what I've worked on, and what I care about.
-        </p>
+        <p class="page-subtitle">A bit about who I am, what I've worked on, and what I care about.</p>
       </div>
+    </div>
 
-      <!-- ── Bio ──────────────────────────────────────────────── -->
-      <section class="section" style="border-top: none; padding-top: 0;">
-        <p style="font-size: 1.05rem; line-height: 1.8; max-width: 44rem; margin-bottom: var(--sp-5);">
-          I'm Khyrul Bashar (Jubayer) — a senior backend engineer based in Dhaka, Bangladesh.
-          I've spent the last six years building Python-based systems across IoT automation,
-          AI-powered SaaS, and industrial observability — from embedded device backends to
-          LLM-orchestrated pipelines shipping to production in Tokyo.
-        </p>
-        <p style="font-size: 1.05rem; line-height: 1.8; max-width: 44rem; margin-bottom: var(--sp-5);">
-          My arc has gone from systems programming (GSoC at Apache Foundation) through IoT R&amp;D
-          leadership, into the Gen-AI/RAG space. I'm drawn to the intersection of reliable
-          infrastructure and emerging AI capabilities — making sure the "magic" is actually
-          grounded in systems that don't page you at 3 AM.
-        </p>
-        <p style="font-size: 1.05rem; line-height: 1.8; max-width: 44rem;">
-          I care about observability, clean API contracts, and documentation that survives
-          the original author leaving. Open to backend-heavy, SRE, and DevOps roles where
-          those values matter.
-        </p>
-      </section>
+    <!-- ── Bio ──────────────────────────────────────────────── -->
+    <section class="section-band section-band--alt">
+      <div class="container">
+        <div class="bio">
+          <p>
+            I'm Khyrul Bashar (Jubayer) — a senior backend engineer based in Dhaka, Bangladesh.
+            I've spent the last six years building Python-based systems across IoT automation,
+            AI-powered SaaS, and industrial observability — from embedded device backends to
+            LLM-orchestrated pipelines shipping to production in Tokyo.
+          </p>
+          <p>
+            My arc has gone from systems programming (GSoC at Apache Foundation) through IoT R&amp;D
+            leadership, into the Gen-AI/RAG space. I'm drawn to the intersection of reliable
+            infrastructure and emerging AI capabilities — making sure the "magic" is actually
+            grounded in systems that don't page you at 3 AM.
+          </p>
+          <p>
+            I care about observability, clean API contracts, and documentation that survives
+            the original author leaving. Open to backend-heavy, SRE, and DevOps roles where
+            those values matter.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <!-- ── Skills ───────────────────────────────────────────── -->
-      <section class="section">
+    <!-- ── Skills ───────────────────────────────────────────── -->
+    <section class="section-band">
+      <div class="container">
         <h2 class="section-heading">Skills</h2>
         <div class="skills-grid">
           <div class="skills-group">
@@ -111,10 +120,12 @@
             </ul>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ── Timeline ─────────────────────────────────────────── -->
-      <section class="section">
+    <!-- ── Timeline ─────────────────────────────────────────── -->
+    <section class="section-band section-band--alt">
+      <div class="container">
         <h2 class="section-heading">Work History</h2>
         <div class="timeline">
 
@@ -184,10 +195,12 @@
           </div>
 
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ── Education & Certifications ───────────────────────── -->
-      <section class="section">
+    <!-- ── Education & Certifications ───────────────────────── -->
+    <section class="section-band">
+      <div class="container">
         <h2 class="section-heading">Education &amp; Certifications</h2>
         <div class="timeline">
 
@@ -208,10 +221,12 @@
           </div>
 
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ── Awards ────────────────────────────────────────────── -->
-      <section class="section">
+    <!-- ── Awards ────────────────────────────────────────────── -->
+    <section class="section-band section-band--alt">
+      <div class="container">
         <h2 class="section-heading">Awards</h2>
         <div class="timeline">
 
@@ -238,9 +253,9 @@
           </div>
 
         </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
   </main>
 
   <!-- ── Footer ─────────────────────────────────────────────── -->

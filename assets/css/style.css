@@ -761,6 +761,19 @@ ul {
 }
 
 /* ============================================================
+   About Page — Bio prose
+   ============================================================ */
+.bio p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 44rem;
+}
+
+.bio p + p {
+  margin-top: var(--sp-5);
+}
+
+/* ============================================================
    Contact Page
    ============================================================ */
 .contact-links {
@@ -787,9 +800,12 @@ ul {
 }
 
 .contact-link-icon {
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   width: 2rem;
-  text-align: center;
+  color: var(--color-text-muted);
 }
 
 .contact-link-label {
